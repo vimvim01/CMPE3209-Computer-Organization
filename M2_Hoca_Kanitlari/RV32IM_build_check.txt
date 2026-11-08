@@ -1,0 +1,10 @@
+Original M1 ELF: readelf -A g3_message_encryption_rv32im.elf
+Tag_RISCV_arch: rv32i2p1_m2p0_zmmul1p0 (no compressed C)
+
+M2 Ubuntu compiler command:
+clang-17 --target=riscv32 -march=rv32im -mabi=ilp32 -O0 -c g3_message_encryption.c -o g3_O0.o
+
+Ripes selected processor: RV32IMC (can execute uncompressed RV32IM instruction subset).
+Instruction width in linked M2 ELF: 4 bytes; -march does not include C.
+
+IMPORTANT: Use the g3_O0.elf and g3_O1.elf from your Ubuntu laptop, not other builds.

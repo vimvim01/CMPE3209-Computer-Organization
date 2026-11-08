@@ -1,0 +1,30 @@
+M1 approved kernel - 14 dynamic instructions
+Source ELF: g3_message_encryption_rv32im.elf (original M1 build)
+ISA from readelf -A: rv32i2p1_m2p0_zmmul1p0 (NO compressed C)
+Original M1 PC endpoints: 0x1128C to 0x11410
+Observation: these are dynamic-trace endpoints, NOT a contiguous address interval.
+Reference: calculate_checksum loop exit and return to main before decrypt_and_verify call.
+
+ #   PC       Word(hex)   objdump instruction             Next PC     Meaning
+ 1   0x1128C   0xFADFF06F   j 0x11238                      0x11238    Jump / loop back
+ 2   0x11238   0xFF042583   lw a1,-16(s0)                  0x1123C    Load i = 34
+ 3   0x1123C   0x02100513   li a0,33                       0x11240    ALU / compare limit
+ 4   0x11240   0x04B54863   blt a0,a1,0x11290              0x11290    Branch taken: 33 < 34
+ 5   0x11290   0xFF442503   lw a0,-12(s0)                  0x11294    Load checksum
+ 6   0x11294   0x00C12083   lw ra,12(sp)                   0x11298    Restore return addr
+ 7   0x11298   0x00812403   lw s0,8(sp)                    0x1129C    Restore frame ptr
+ 8   0x1129C   0x01010113   addi sp,sp,16                  0x112A0    Restore stack
+ 9   0x112A0   0x00008067   ret                            0x11400    Return to main
+10   0x11400   0x000125B7   lui a1,0x12                    0x11404    Load global address high
+11   0x11404   0x42A5A823   sw a0,0x430(a1)                0x11408    Store checksum
+12   0x11408   0xFF042503   lw a0,-16(s0)                  0x1140C    Load XOR key
+13   0x1140C   0x00000097   auipc ra,0                     0x11410    Call target base
+14   0x11410   0xE98080E7   jalr -0x168(ra)                0x112A4    Call decrypt_and_verify
+
+Evidence command on original ELF (may differ in formatting by LLVM version):
+llvm-objdump-17 -d --start-address=0x11238 --stop-address=0x112A4 g3_message_encryption_rv32im.elf
+llvm-objdump-17 -d --start-address=0x11400 --stop-address=0x11414 g3_message_encryption_rv32im.elf
+
+Current Ubuntu -O0 linked ELF g3_O0.elf uses different code addresses, e.g. checksum at 0x10120.
+Do NOT claim that M1 addresses originate from the Ubuntu g3_O0.elf.
+Compiler flags for Ubuntu M2: -march=rv32im -mabi=ilp32; Ripes RV32IMC is a compatible superset.

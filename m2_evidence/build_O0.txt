@@ -1,0 +1,11 @@
+Compiler: Clang 17
+Target: riscv32
+ISA: rv32im
+ABI: ilp32
+Optimization: -O0
+
+Compile:
+clang-17 --target=riscv32 -march=rv32im -mabi=ilp32 -O0 -c g3_message_encryption.c -o g3_O0.o
+
+Link:
+ld.lld-17 -m elf32lriscv -e main -Ttext=0x10000 -o g3_O0.elf g3_O0.o
