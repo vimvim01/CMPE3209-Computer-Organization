@@ -1,0 +1,15 @@
+Metric,Baseline,Modified
+instr,4741,4401
+loads,1206,1070
+stores,701,633
+data_references,1907,1703
+hits,1748,1586
+misses,159,117
+hit_ratio,0.9166229680125852,0.9312977099236641
+Ts_cycles,2.667540639748295,2.3740458015267176
+memory_writebacks_on_eviction,81,66
+dirty_lines_remaining,7,7
+first30_hits,22,25
+first30_misses,8,5
+checksum,23899846,23899846
+decrypt_ok,1,1

@@ -1,0 +1,9 @@
+line,set,valid,tag,dirty,block,lru_rank
+0,0,0,-,0,-,-
+1,1,0,-,0,-,-
+2,2,0,-,0,-,-
+3,3,1,0xFFFFFF,1,0x7FFFFFB0,-
+4,4,1,0xFFFFFF,0,0x7FFFFFC0,-
+5,5,1,0xFFFFFF,1,0x7FFFFFD0,-
+6,6,1,0xFFFFFF,1,0x7FFFFFE0,-
+7,7,0,-,0,-,-

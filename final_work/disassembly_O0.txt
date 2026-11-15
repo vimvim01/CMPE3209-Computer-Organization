@@ -1,0 +1,246 @@
+
+/mnt/data/CMPE3209_verified_source/g3_O0.elf:	file format elf32-littleriscv
+
+Disassembly of section .text:
+
+00010000 <xor_transform>:
+   10000: ff010113     	addi	sp, sp, -0x10
+   10004: 00112623     	sw	ra, 0xc(sp)
+   10008: 00812423     	sw	s0, 0x8(sp)
+   1000c: 01010413     	addi	s0, sp, 0x10
+   10010: fea42a23     	sw	a0, -0xc(s0)
+   10014: feb42823     	sw	a1, -0x10(s0)
+   10018: ff442503     	lw	a0, -0xc(s0)
+   1001c: ff042583     	lw	a1, -0x10(s0)
+   10020: 00b54533     	xor	a0, a0, a1
+   10024: 00c12083     	lw	ra, 0xc(sp)
+   10028: 00812403     	lw	s0, 0x8(sp)
+   1002c: 01010113     	addi	sp, sp, 0x10
+   10030: 00008067     	ret
+
+00010034 <generate_and_encrypt>:
+   10034: fe010113     	addi	sp, sp, -0x20
+   10038: 00112e23     	sw	ra, 0x1c(sp)
+   1003c: 00812c23     	sw	s0, 0x18(sp)
+   10040: 02010413     	addi	s0, sp, 0x20
+   10044: fea42a23     	sw	a0, -0xc(s0)
+   10048: 0012c537     	lui	a0, 0x12c
+   1004c: 4ba50513     	addi	a0, a0, 0x4ba
+   10050: fea42823     	sw	a0, -0x10(s0)
+   10054: 00000513     	li	a0, 0x0
+   10058: fea42623     	sw	a0, -0x14(s0)
+   1005c: 0040006f     	j	0x10060 <.LBB1_1>
+
+00010060 <.LBB1_1>:
+   10060: fec42583     	lw	a1, -0x14(s0)
+   10064: 02100513     	li	a0, 0x21
+   10068: 00b55463     	bge	a0, a1, 0x10070 <.LBB1_1+0x10>
+   1006c: 0a40006f     	j	0x10110 <.LBB1_3>
+   10070: 0040006f     	j	0x10074 <.LBB1_2>
+
+00010074 <.LBB1_2>:
+   10074: ff042503     	lw	a0, -0x10(s0)
+   10078: 001965b7     	lui	a1, 0x196
+   1007c: 60d58593     	addi	a1, a1, 0x60d
+   10080: 02b50533     	mul	a0, a0, a1
+   10084: 3c6ef5b7     	lui	a1, 0x3c6ef
+   10088: 35f58593     	addi	a1, a1, 0x35f
+   1008c: 00b50533     	add	a0, a0, a1
+   10090: fea42823     	sw	a0, -0x10(s0)
+   10094: ff042503     	lw	a0, -0x10(s0)
+   10098: 01055513     	srli	a0, a0, 0x10
+   1009c: 09d8a5b7     	lui	a1, 0x9d8a
+   100a0: d8a58593     	addi	a1, a1, -0x276
+   100a4: 02b535b3     	mulhu	a1, a0, a1
+   100a8: 01a00613     	li	a2, 0x1a
+   100ac: 02c585b3     	mul	a1, a1, a2
+   100b0: 40b50533     	sub	a0, a0, a1
+   100b4: 04150593     	addi	a1, a0, 0x41
+   100b8: fec42603     	lw	a2, -0x14(s0)
+   100bc: 00012537     	lui	a0, 0x12
+   100c0: 34450513     	addi	a0, a0, 0x344
+   100c4: fea42423     	sw	a0, -0x18(s0)
+   100c8: 00261613     	slli	a2, a2, 0x2
+   100cc: 00c50633     	add	a2, a0, a2
+   100d0: 00b62023     	sw	a1, 0x0(a2)
+   100d4: fec42583     	lw	a1, -0x14(s0)
+   100d8: 00259593     	slli	a1, a1, 0x2
+   100dc: 00b50533     	add	a0, a0, a1
+   100e0: 00052503     	lw	a0, 0x0(a0)
+   100e4: ff442583     	lw	a1, -0xc(s0)
+   100e8: f19ff0ef     	jal	0x10000 <xor_transform>
+   100ec: fe842583     	lw	a1, -0x18(s0)
+   100f0: fec42603     	lw	a2, -0x14(s0)
+   100f4: 00261613     	slli	a2, a2, 0x2
+   100f8: 00c585b3     	add	a1, a1, a2
+   100fc: 00a5a023     	sw	a0, 0x0(a1)
+   10100: fec42503     	lw	a0, -0x14(s0)
+   10104: 00150513     	addi	a0, a0, 0x1
+   10108: fea42623     	sw	a0, -0x14(s0)
+   1010c: f55ff06f     	j	0x10060 <.LBB1_1>
+
+00010110 <.LBB1_3>:
+   10110: 01c12083     	lw	ra, 0x1c(sp)
+   10114: 01812403     	lw	s0, 0x18(sp)
+   10118: 02010113     	addi	sp, sp, 0x20
+   1011c: 00008067     	ret
+
+00010120 <calculate_checksum>:
+   10120: ff010113     	addi	sp, sp, -0x10
+   10124: 00112623     	sw	ra, 0xc(sp)
+   10128: 00812423     	sw	s0, 0x8(sp)
+   1012c: 01010413     	addi	s0, sp, 0x10
+   10130: 00000513     	li	a0, 0x0
+   10134: fea42a23     	sw	a0, -0xc(s0)
+   10138: fea42823     	sw	a0, -0x10(s0)
+   1013c: 0040006f     	j	0x10140 <.LBB2_1>
+
+00010140 <.LBB2_1>:
+   10140: ff042583     	lw	a1, -0x10(s0)
+   10144: 02100513     	li	a0, 0x21
+   10148: 00b55463     	bge	a0, a1, 0x10150 <.LBB2_1+0x10>
+   1014c: 0500006f     	j	0x1019c <.LBB2_3>
+   10150: 0040006f     	j	0x10154 <.LBB2_2>
+
+00010154 <.LBB2_2>:
+   10154: ff442503     	lw	a0, -0xc(s0)
+   10158: 01f55593     	srli	a1, a0, 0x1f
+   1015c: 00151513     	slli	a0, a0, 0x1
+   10160: 00b56533     	or	a0, a0, a1
+   10164: fea42a23     	sw	a0, -0xc(s0)
+   10168: ff442503     	lw	a0, -0xc(s0)
+   1016c: ff042603     	lw	a2, -0x10(s0)
+   10170: 000125b7     	lui	a1, 0x12
+   10174: 34458593     	addi	a1, a1, 0x344
+   10178: 00261613     	slli	a2, a2, 0x2
+   1017c: 00c585b3     	add	a1, a1, a2
+   10180: 0005a583     	lw	a1, 0x0(a1)
+   10184: 00b50533     	add	a0, a0, a1
+   10188: fea42a23     	sw	a0, -0xc(s0)
+   1018c: ff042503     	lw	a0, -0x10(s0)
+   10190: 00150513     	addi	a0, a0, 0x1
+   10194: fea42823     	sw	a0, -0x10(s0)
+   10198: fa9ff06f     	j	0x10140 <.LBB2_1>
+
+0001019c <.LBB2_3>:
+   1019c: ff442503     	lw	a0, -0xc(s0)
+   101a0: 00c12083     	lw	ra, 0xc(sp)
+   101a4: 00812403     	lw	s0, 0x8(sp)
+   101a8: 01010113     	addi	sp, sp, 0x10
+   101ac: 00008067     	ret
+
+000101b0 <decrypt_and_verify>:
+   101b0: fe010113     	addi	sp, sp, -0x20
+   101b4: 00112e23     	sw	ra, 0x1c(sp)
+   101b8: 00812c23     	sw	s0, 0x18(sp)
+   101bc: 02010413     	addi	s0, sp, 0x20
+   101c0: fea42a23     	sw	a0, -0xc(s0)
+   101c4: 0012c537     	lui	a0, 0x12c
+   101c8: 4ba50513     	addi	a0, a0, 0x4ba
+   101cc: fea42823     	sw	a0, -0x10(s0)
+   101d0: 00100513     	li	a0, 0x1
+   101d4: fea42623     	sw	a0, -0x14(s0)
+   101d8: 00000513     	li	a0, 0x0
+   101dc: fea42423     	sw	a0, -0x18(s0)
+   101e0: 0040006f     	j	0x101e4 <.LBB3_1>
+
+000101e4 <.LBB3_1>:
+   101e4: fe842583     	lw	a1, -0x18(s0)
+   101e8: 02100513     	li	a0, 0x21
+   101ec: 00b55463     	bge	a0, a1, 0x101f4 <.LBB3_1+0x10>
+   101f0: 0c00006f     	j	0x102b0 <.LBB3_5>
+   101f4: 0040006f     	j	0x101f8 <.LBB3_2>
+
+000101f8 <.LBB3_2>:
+   101f8: fe842503     	lw	a0, -0x18(s0)
+   101fc: 00251593     	slli	a1, a0, 0x2
+   10200: 00012537     	lui	a0, 0x12
+   10204: 34450513     	addi	a0, a0, 0x344
+   10208: fea42223     	sw	a0, -0x1c(s0)
+   1020c: 00b50533     	add	a0, a0, a1
+   10210: 00052503     	lw	a0, 0x0(a0)
+   10214: ff442583     	lw	a1, -0xc(s0)
+   10218: de9ff0ef     	jal	0x10000 <xor_transform>
+   1021c: 00050593     	mv	a1, a0
+   10220: fe442503     	lw	a0, -0x1c(s0)
+   10224: fe842603     	lw	a2, -0x18(s0)
+   10228: 00261613     	slli	a2, a2, 0x2
+   1022c: 00c50633     	add	a2, a0, a2
+   10230: 00b62023     	sw	a1, 0x0(a2)
+   10234: ff042583     	lw	a1, -0x10(s0)
+   10238: 00196637     	lui	a2, 0x196
+   1023c: 60d60613     	addi	a2, a2, 0x60d
+   10240: 02c585b3     	mul	a1, a1, a2
+   10244: 3c6ef637     	lui	a2, 0x3c6ef
+   10248: 35f60613     	addi	a2, a2, 0x35f
+   1024c: 00c585b3     	add	a1, a1, a2
+   10250: feb42823     	sw	a1, -0x10(s0)
+   10254: fe842583     	lw	a1, -0x18(s0)
+   10258: 00259593     	slli	a1, a1, 0x2
+   1025c: 00b50533     	add	a0, a0, a1
+   10260: 00052503     	lw	a0, 0x0(a0)
+   10264: ff042583     	lw	a1, -0x10(s0)
+   10268: 0105d593     	srli	a1, a1, 0x10
+   1026c: 09d8a637     	lui	a2, 0x9d8a
+   10270: d8a60613     	addi	a2, a2, -0x276
+   10274: 02c5b633     	mulhu	a2, a1, a2
+   10278: 01a00693     	li	a3, 0x1a
+   1027c: 02d60633     	mul	a2, a2, a3
+   10280: 40c585b3     	sub	a1, a1, a2
+   10284: 04158593     	addi	a1, a1, 0x41
+   10288: 00b51463     	bne	a0, a1, 0x10290 <.LBB3_2+0x98>
+   1028c: 0140006f     	j	0x102a0 <.LBB3_4>
+   10290: 0040006f     	j	0x10294 <.LBB3_3>
+
+00010294 <.LBB3_3>:
+   10294: 00000513     	li	a0, 0x0
+   10298: fea42623     	sw	a0, -0x14(s0)
+   1029c: 0040006f     	j	0x102a0 <.LBB3_4>
+
+000102a0 <.LBB3_4>:
+   102a0: fe842503     	lw	a0, -0x18(s0)
+   102a4: 00150513     	addi	a0, a0, 0x1
+   102a8: fea42423     	sw	a0, -0x18(s0)
+   102ac: f39ff06f     	j	0x101e4 <.LBB3_1>
+
+000102b0 <.LBB3_5>:
+   102b0: fec42503     	lw	a0, -0x14(s0)
+   102b4: 01c12083     	lw	ra, 0x1c(sp)
+   102b8: 01812403     	lw	s0, 0x18(sp)
+   102bc: 02010113     	addi	sp, sp, 0x20
+   102c0: 00008067     	ret
+
+000102c4 <main>:
+   102c4: ff010113     	addi	sp, sp, -0x10
+   102c8: 00112623     	sw	ra, 0xc(sp)
+   102cc: 00812423     	sw	s0, 0x8(sp)
+   102d0: 01010413     	addi	s0, sp, 0x10
+   102d4: 00000513     	li	a0, 0x0
+   102d8: fea42a23     	sw	a0, -0xc(s0)
+   102dc: 0ba00513     	li	a0, 0xba
+   102e0: fea42823     	sw	a0, -0x10(s0)
+   102e4: ff042503     	lw	a0, -0x10(s0)
+   102e8: 00050463     	beqz	a0, 0x102f0 <main+0x2c>
+   102ec: 0140006f     	j	0x10300 <.LBB4_2>
+   102f0: 0040006f     	j	0x102f4 <.LBB4_1>
+
+000102f4 <.LBB4_1>:
+   102f4: 0a500513     	li	a0, 0xa5
+   102f8: fea42823     	sw	a0, -0x10(s0)
+   102fc: 0040006f     	j	0x10300 <.LBB4_2>
+
+00010300 <.LBB4_2>:
+   10300: ff042503     	lw	a0, -0x10(s0)
+   10304: d31ff0ef     	jal	0x10034 <generate_and_encrypt>
+   10308: e19ff0ef     	jal	0x10120 <calculate_checksum>
+   1030c: 000125b7     	lui	a1, 0x12
+   10310: 32a5ae23     	sw	a0, 0x33c(a1)
+   10314: ff042503     	lw	a0, -0x10(s0)
+   10318: e99ff0ef     	jal	0x101b0 <decrypt_and_verify>
+   1031c: 000125b7     	lui	a1, 0x12
+   10320: 34a5a023     	sw	a0, 0x340(a1)
+   10324: 00000513     	li	a0, 0x0
+   10328: 00c12083     	lw	ra, 0xc(sp)
+   1032c: 00812403     	lw	s0, 0x8(sp)
+   10330: 01010113     	addi	sp, sp, 0x10
+   10334: 00008067     	ret

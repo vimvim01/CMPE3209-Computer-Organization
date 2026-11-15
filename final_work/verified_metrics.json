@@ -1,0 +1,197 @@
+{
+  "O0": {
+    "Ic": 4741,
+    "classes": {
+      "ALU": 2102,
+      "Store": 701,
+      "Load": 1206,
+      "Branch/jump": 528,
+      "Multiply": 204
+    },
+    "processor_cycles": 5677.0,
+    "CPI": 1.1974267032271673,
+    "T_no_memory_ns": 5677.0,
+    "MIPS": 835.1241853091421,
+    "m": 0.40223581522885465,
+    "Ts": 2.667540639748295,
+    "T_no_cache_ns": 43817.0,
+    "T_with_cache_ns": 10763.999999999998,
+    "data_references": 1907,
+    "load_count": 1206,
+    "store_count": 701,
+    "stack_count": 1667,
+    "array_count": 238
+  },
+  "cache_O0": {
+    "references": 1907,
+    "hits": 1748,
+    "misses": 159,
+    "hit_ratio": 0.9166229680125852,
+    "memory_writes": 81,
+    "dirty_remaining": 7
+  },
+  "cache_first30_O0": {
+    "references": 30,
+    "hits": 22,
+    "misses": 8,
+    "hit_ratio": 0.7333333333333333,
+    "memory_writes": 2,
+    "dirty_remaining": 3
+  },
+  "first5": [
+    {
+      "address": "0x7FFFFFEC",
+      "binary": "01111111111111111111111111101100",
+      "tag": "0x0FFFFFF",
+      "line": 6,
+      "offset": 12
+    },
+    {
+      "address": "0x7FFFFFE8",
+      "binary": "01111111111111111111111111101000",
+      "tag": "0x0FFFFFF",
+      "line": 6,
+      "offset": 8
+    },
+    {
+      "address": "0x7FFFFFE4",
+      "binary": "01111111111111111111111111100100",
+      "tag": "0x0FFFFFF",
+      "line": 6,
+      "offset": 4
+    },
+    {
+      "address": "0x7FFFFFE0",
+      "binary": "01111111111111111111111111100000",
+      "tag": "0x0FFFFFF",
+      "line": 6,
+      "offset": 0
+    },
+    {
+      "address": "0x7FFFFFDC",
+      "binary": "01111111111111111111111111011100",
+      "tag": "0x0FFFFFF",
+      "line": 5,
+      "offset": 12
+    }
+  ],
+  "mapping": [
+    {
+      "mapping": "Direct",
+      "hits": 1748,
+      "misses": 159,
+      "H": 0.9166229680125852
+    },
+    {
+      "mapping": "2-way LRU",
+      "hits": 1872,
+      "misses": 35,
+      "H": 0.9816465652857892
+    },
+    {
+      "mapping": "4-way LRU",
+      "hits": 1870,
+      "misses": 37,
+      "H": 0.9805977975878343
+    },
+    {
+      "mapping": "Fully associative",
+      "hits": 1870,
+      "misses": 37,
+      "H": 0.9805977975878343
+    }
+  ],
+  "line_size": [
+    {
+      "line_size_B": 8,
+      "hits": 1771,
+      "misses": 136,
+      "H": 0.9286837965390666
+    },
+    {
+      "line_size_B": 16,
+      "hits": 1748,
+      "misses": 159,
+      "H": 0.9166229680125852
+    },
+    {
+      "line_size_B": 32,
+      "hits": 1719,
+      "misses": 188,
+      "H": 0.9014158363922391
+    },
+    {
+      "line_size_B": 64,
+      "hits": 1580,
+      "misses": 327,
+      "H": 0.8285264813843733
+    }
+  ],
+  "O1": {
+    "Ic": 1289,
+    "classes": {
+      "ALU": 844,
+      "Multiply": 204,
+      "Store": 70,
+      "Branch/jump": 103,
+      "Load": 68
+    },
+    "processor_cycles": 1800.0,
+    "CPI": 1.3964313421256789,
+    "T_no_memory_ns": 1800.0,
+    "MIPS": 716.1111111111111,
+    "m": 0.10705973622963538,
+    "Ts": 3.753623188405796,
+    "T_no_cache_ns": 4560.0,
+    "T_with_cache_ns": 2318.0,
+    "data_references": 138,
+    "load_count": 68,
+    "store_count": 70,
+    "stack_count": 0,
+    "array_count": 136
+  },
+  "cache_O1": {
+    "references": 138,
+    "hits": 119,
+    "misses": 19,
+    "hit_ratio": 0.8623188405797102,
+    "memory_writes": 7,
+    "dirty_remaining": 8
+  },
+  "cache_first30_O1": {
+    "references": 30,
+    "hits": 21,
+    "misses": 9,
+    "hit_ratio": 0.7,
+    "memory_writes": 1,
+    "dirty_remaining": 8
+  },
+  "4g_baseline": {
+    "references": 1907,
+    "hits": 1763,
+    "misses": 144,
+    "H": 0.9244887257472469,
+    "Ts": 2.510225485055061,
+    "Y7": {
+      "checksum": 23899846,
+      "decrypt_ok": 1,
+      "data": 84
+    }
+  },
+  "4g_modified": {
+    "references": 1703,
+    "hits": 1591,
+    "misses": 112,
+    "H": 0.9342337052260716,
+    "Ts": 2.3153258954785674,
+    "Y7": {
+      "checksum": 23899846,
+      "decrypt_ok": 1,
+      "data": 84
+    }
+  },
+  "speedup_opt_cache": 4.6436583261432265,
+  "speedup_cache_O0": 4.070698625046452,
+  "cache_speedup_access_only": 7.4975427560448225,
+  "methodology": "O0/O1 actual uploaded ELF from Ubuntu Clang 17.0.6; 4g separate same-compiler control Swift clang 17.0.0; custom functional RV32IM interpreter initialized sp=0x7ffffff0, gp=0x10000000, other GPR=0; no pipeline or hardware timing measured."
+}
